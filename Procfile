@@ -1,1 +1,1 @@
-web:gunicorn scholarlyScience.wsgi
+web: gunicorn scholarlyScience.wsgi
