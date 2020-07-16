@@ -7,18 +7,18 @@ from django.contrib.postgres.fields import ArrayField
 class company(models.Model):
     user=models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     company_name = models.CharField(max_length=100)
-    #remote = models.BooleanField(default=False)
+    remote = models.BooleanField(default=False)
     company_logo = models.URLField()
-    #No_of_Assignments = models.IntegerField()
-    #if_updated = BooleanField(default=True)
-    #No_of_Openings = models.IntegerField()
+    No_of_Assignments = models.IntegerField(null=True)
+    if_updated = BooleanField(default=True)
+    No_of_Openings = models.IntegerField(null=True)
     tags = ArrayField(
             models.CharField(max_length=10, blank=True),blank=True
         )
     Description = models.TextField(default="")
-    # tech_stack = ListTextField(base_field=CharField(max_length=100), default="")
-    # openings_tags = ListTextField(base_field=CharField(max_length=100), default="")
-    # location = ListTextField(base_field=CharField(max_length=100), default="")
+    tech_stack = ListTextField(base_field=CharField(max_length=100), default="")
+    openings_tags = ListTextField(base_field=CharField(max_length=100), default="")
+    location = ListTextField(base_field=CharField(max_length=100), default="")
 
 class assessment(models.Model):
     user=models.ForeignKey(CustomUser, on_delete=models.CASCADE)
