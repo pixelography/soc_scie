@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import *
 from django_mysql.models import *
 from accounts.models import *
+from django.contrib.postgres.fields import ArrayField
 
 class company(models.Model):
     user=models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -11,7 +12,9 @@ class company(models.Model):
     No_of_Assignments = models.IntegerField()
     if_updated = BooleanField(default=True)
     No_of_Openings = models.IntegerField()
-    tags = ListTextField(base_field=CharField(max_length=100), default="")
+    tags = ArrayField(
+            models.CharField(max_length=10, blank=True)
+        )
     Description = models.TextField(default="")
     tech_stack = ListTextField(base_field=CharField(max_length=100), default="")
     openings_tags = ListTextField(base_field=CharField(max_length=100), default="")
